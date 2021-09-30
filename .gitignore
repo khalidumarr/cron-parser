@@ -1,0 +1,10 @@
+/.phpunit.result.cache
+/composer.lock
+.idea/cron-parser.iml
+.idea/modules.xml
+.idea/php-docker-settings.xml
+.idea/php-test-framework.xml
+.idea/php.xml
+.idea/vcs.xml
+.idea/workspace.xml
+/vendor/
