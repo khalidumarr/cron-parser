@@ -2,7 +2,7 @@
 
 namespace CronParser\Exceptions;
 
-class MaxLimitException extends \Exception
+class InvalidArgumentException extends \Exception
 {
     public function __construct($field = "", $code = 0, $previous = null)
     {
@@ -12,6 +12,6 @@ class MaxLimitException extends \Exception
 
     public function generateMessage() : string
     {
-        return "Max limit of value is reached for ";
+        return "Invalid Argument passed for ";
     }
 }

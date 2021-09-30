@@ -2,14 +2,16 @@
 
 namespace CronParser\Parsers;
 
+use JetBrains\PhpStorm\Pure;
+
 class ParserFactory implements ParserFactoryInterface {
-    public function Make(string $value): ParserInterface
+    #[Pure] public function Make(string $value): ParserInterface
     {
-        if (strpos($value, DelimeterEnum::FREQUENCY) !== false) {
-            return new FrequencyParser();
-        } elseif (strpos($value, DelimeterEnum::LIST) !== false) {
+        if (str_contains($value, DelimeterEnum::FREQUENCY)) {
+            return new FrequencyParser(new RangeParser());
+        } elseif (str_contains($value, DelimeterEnum::LIST)) {
             return new ListParser();
-        } elseif (strpos($value, DelimeterEnum::RANGE) !== false) {
+        } elseif (str_contains($value, DelimeterEnum::RANGE)) {
             return new RangeParser();
         } else{
             return new ConstantParser();

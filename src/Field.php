@@ -2,6 +2,7 @@
 
 namespace CronParser;
 
+use CronParser\Exceptions\InvalidArgumentException;
 use CronParser\Exceptions\MaxLimitException;
 use CronParser\Exceptions\MinLimitException;
 
@@ -38,17 +39,23 @@ class Field{
     }
 
     /**
-     * @param int $value
      * @throws MinLimitException
      * @throws MaxLimitException
+     * @throws InvalidArgumentException
      */
-    public function validate(int $value)
+    public function validate($value) : bool
     {
-        if ($value > $this->getMax()) {
-            throw new MaxLimitException();
-        } elseif ($value < $this->getMin()) {
-            throw new MinLimitException();
+        if (!is_numeric($value)) {
+            throw new InvalidArgumentException("Non numeric value sent");
         }
+
+        if ($value > $this->getMax()) {
+            throw new MaxLimitException($this->getName());
+        } elseif ($value < $this->getMin()) {
+            throw new MinLimitException($this->getName());
+        }
+
+        return true;
     }
 
     /**

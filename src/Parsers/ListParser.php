@@ -1,11 +1,22 @@
 <?php
 
-namespace parsers;
+namespace CronParser\Parsers;
+use CronParser\Exceptions\MaxLimitException;
+use CronParser\Exceptions\MinLimitException;
+use CronParser\Field;
 
 class ListParser implements ParserInterface {
-    public static function parse(string $value, \Field $field): array
+    /**
+     * @throws MaxLimitException
+     * @throws MinLimitException
+     */
+    public function parse(string $value, Field $field): array
     {
-        // TODO: Implement parse() method.
-        return [];
+        $iterations = explode(",", $value);
+        foreach ($iterations as $iteration) {
+            assert($field->validate($iteration), true);
+        }
+
+        return $iterations;
     }
 }
