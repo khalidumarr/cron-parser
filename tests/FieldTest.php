@@ -11,6 +11,5 @@ class FieldTest extends TestCase
     public function testTesting()
     {
         $field = new Field();
-        $this->assertEquals($field->testing(), "hi");
     }
 }
