@@ -14,11 +14,17 @@ class RangeParser implements ParserInterface {
     private int $frequency;
 
     /**
+     * @var bool
+     */
+    private bool $fullRange;
+
+    /**
      * @param int $frequency
      */
-    public function __construct(int $frequency = 1)
+    public function __construct(int $frequency = 1, bool $fullRange = false)
     {
         $this->frequency = $frequency;
+        $this->fullRange = $fullRange;
     }
 
     /**
@@ -32,7 +38,12 @@ class RangeParser implements ParserInterface {
             throw new InvalidArgumentException($field->getName());
         }
 
-        list($min, $max) = explode("-", $value);
+        if ($this->isFullRange()) {
+            list($min, $max) = [$field->getMin(), $field->getMax()];
+        } else {
+            list($min, $max) = explode("-", $value);
+        }
+
         assert($field->validate($min), true);
         assert($field->validate($max), true);
 
@@ -65,4 +76,19 @@ class RangeParser implements ParserInterface {
         $this->frequency = $frequency;
     }
 
+    /**
+     * @return bool
+     */
+    public function isFullRange(): bool
+    {
+        return $this->fullRange;
+    }
+
+    /**
+     * @param bool $fullRange
+     */
+    public function setFullRange(bool $fullRange): void
+    {
+        $this->fullRange = $fullRange;
+    }
 }

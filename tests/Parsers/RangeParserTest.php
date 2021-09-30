@@ -33,6 +33,19 @@ class RangeParserTest extends TestCase
      * @throws InvalidArgumentException
      * @throws MinLimitException
      */
+    public function testParseFullRange()
+    {
+        $parser = new RangeParser(1, true);
+        $field = new Field("months", 1, 12);
+        $result = $parser->parse("*", $field);
+        $this->assertEqualsCanonicalizing([1,2,3,4,5,6,7,8,9,10,11,12], $result);
+    }
+
+    /**
+     * @throws MaxLimitException
+     * @throws InvalidArgumentException
+     * @throws MinLimitException
+     */
     public function testParserThrowsMaxLimitException()
     {
         $parser = new RangeParser();

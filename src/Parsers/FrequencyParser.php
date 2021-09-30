@@ -30,7 +30,7 @@ class FrequencyParser implements ParserInterface {
 
         // string contain * (means full range)
         if (str_contains($range, DelimeterEnum::ALL)) {
-            $range = $field->getMin() . DelimeterEnum::RANGE .  $field->getMax();
+            $this->rangeParser->setFullRange(true);
         }
 
         return $this->rangeParser->parse($range, $field);

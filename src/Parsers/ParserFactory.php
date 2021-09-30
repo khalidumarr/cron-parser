@@ -13,6 +13,8 @@ class ParserFactory implements ParserFactoryInterface {
             return new ListParser();
         } elseif (str_contains($value, DelimeterEnum::RANGE)) {
             return new RangeParser();
+        } elseif ($value == DelimeterEnum::ALL) {
+            return new RangeParser(1, true);
         } else{
             return new ConstantParser();
         }
