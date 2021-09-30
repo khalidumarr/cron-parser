@@ -44,7 +44,7 @@ class CronProcessor
         return new Cron($processedFields, $expression->getCommand());
     }
 
-    public function processFields($inputFields) : array
+    private function processFields($inputFields) : array
     {
         $fields = [];
         foreach ($inputFields as $key => $value) {

@@ -2,7 +2,7 @@
 
 namespace CronParser\Inputs;
 
-use CronParser\Exceptions\InvalidInputExceptionException;
+use CronParser\Exceptions\InvalidInputException;
 
 class InputTaker implements InputTakerInterface {
 
@@ -20,14 +20,14 @@ class InputTaker implements InputTakerInterface {
     }
 
     /**
-     * @throws InvalidInputExceptionException
+     * @throws InvalidInputException
      */
     public function takeInput() : Expression {
         $input = $this->source->getInput();
         $chunks = explode(" ", $input);
 
         if (count($chunks) != 6) {
-            throw new InvalidInputExceptionException();
+            throw new InvalidInputException();
         }
 
         return new Expression(array_slice($chunks, 0, (count($chunks) - 1)),
