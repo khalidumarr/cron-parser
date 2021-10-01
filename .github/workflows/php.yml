@@ -33,4 +33,4 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
-     run: ./phpunit-9.5.phar --configuration phpunit.xml.dist tests
+      run: ./phpunit-9.5.phar --configuration phpunit.xml.dist tests
