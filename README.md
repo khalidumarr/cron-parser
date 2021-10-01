@@ -49,7 +49,23 @@ docker run -it --rm -v "$PWD":/opt/project php:8.0-cli /opt/project/phpunit-9.5.
 ```
 ## Code structure
 
-TBD...
+Code is devided in three main sections
+- inputs
+- parsers
+- outputs
+
+`InputTaker` class relies on `InputInterface`, which means input can come from various sources. For now its taking from Command line arguments (added `CommandLineInput` class to take input from STDIN just for demonstration)<br>
+
+Each section of CRON string (i.e. `* {SECTION} * * *`) is called `Field` and it has defined min and max limit. Parsers are used irrespective of type of field and there is a factory which determines which parser to initialize based on type of delimeter present in parameter. <br>
+
+In the end, When next run times are determined by `CronProcessor` result which is object of `Cron` is passed to Output class for display.
+Just like Input, Output can also be in different forms e.g. file, stdout, db
+explainition
+## Known Issues
+- Test coverage is not full yet (Currently at 80%), also the number of test cases are bit limited. 
+- Not accepting Week days by name (ex: SUN, MON)
+- Not accepting Month names (ex: JAN, FEB)
+- List is not accepted in frequency type fields (ex: 1,3/2 * * * *)
 
 ## Test Cover Report (from last run)
 Check [Report](https://htmlpreview.github.io/?https://github.com/khalidumarr/cron-parser/blob/master/test-results.html) for detailed coverage information.
