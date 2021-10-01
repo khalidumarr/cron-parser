@@ -5,6 +5,10 @@
     "require": {
         "phpunit/phpunit": "^9.5"
     },
+    "license": "MIT",
+    "scripts": {
+        "test": "php vendor/bin/phpunit"
+    },
     "authors": [
         {
             "name": "Khalid Umar",
