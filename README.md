@@ -72,4 +72,4 @@ explainition
 ## Test Cover Report (from last run)
 Check [Report](https://htmlpreview.github.io/?https://github.com/khalidumarr/cron-parser/blob/master/test-results.html) for detailed coverage information.
 ## Actual Demo Output
-<img src="./output.png" alt="Ouput"/>
+<img src="output_usecase.png" alt="Ouput"/>
