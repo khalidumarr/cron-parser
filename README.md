@@ -1,4 +1,6 @@
 # cron-parser
+[![PHP Composer | Tests](https://github.com/khalidumarr/cron-parser/actions/workflows/php.yml/badge.svg)](https://github.com/khalidumarr/cron-parser/actions/workflows/php.yml)
+
 <p>This small library parses the cron string and display next run times for each field.<br>
 Timing of each cron field (i.e. minute, hour) is isoladed and is based on its own unit of time. </p>
 
