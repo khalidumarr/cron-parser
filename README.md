@@ -34,6 +34,7 @@ php main.php "{CRON_STRING} {COMMAND}"
 
 with Docker:
 ```
+docker run -it --rm -v "$PWD":/opt/project php:8.0-cli /opt/project/composer.phar install --working-dir=/opt/project
 docker run -it --rm -v "$PWD":/opt/project php:8.0-cli php /opt/project/main.php "{CRON_STRING} {COMMAND}"
 ```
 
